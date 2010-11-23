@@ -14,7 +14,7 @@
 
 <% @coupons.each do |coupon| %>
 <tr>
-	<td><%= link_to coupon.deal.title, {:controller => 'public', :action => 'deal', :id => coupon.deal.id} %></td>
+	<td><%= link_to coupon.deal.title, :controller => 'public', :action => 'deal', :id => coupon.deal.id %></td>
     <td><%= coupon.coupon_number %></td>
     <td><%= coupon.purchase_date %></td>
     <td><%= coupon.expiration_date %></td>
@@ -25,6 +25,6 @@
 </table>
 
 <br />
-
+<%= link_to 'My Profile', :action => 'my_profile', :id => current_user.id %>
 
 

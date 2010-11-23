@@ -9,6 +9,9 @@ def my_account
 end
 
 def my_profile
+
+	@profile = Profile.find(params[:id])
+	
 end
 
 

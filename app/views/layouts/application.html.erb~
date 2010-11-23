@@ -13,12 +13,13 @@
 		
 		<div id="user-nav"/>
 
+			<%= link_to "Today's Deal", 'public/home'%>
 			<% if user_signed_in? %>
 
 			
-					<%= link_to 'Admin', '/admin' %>
+					<%= link_to 'Admin', '/admin/menu' %>
 				
-					<%= link_to 'My Account', coupons_path %>
+					<%= link_to 'My Account', '/member/my_coupons' %>
 			
 				<%=link_to "Sign Out", destroy_user_session_path %>
 		

@@ -1,7 +1,7 @@
 class MemberController < ApplicationController
 
 def my_coupons
-@coupons = Coupon.find_all_by_user_id(current_user.id)
+@coupons = Coupon.find_by_user_id(current_user.id)
 
 end
 

@@ -1,6 +1,6 @@
 class Coupon < ActiveRecord::Base
 
-belongs_to :deal
+belongs_to :deals
 belongs_to :order
 
 end

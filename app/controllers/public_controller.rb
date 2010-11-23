@@ -6,4 +6,10 @@ def home
 
 end
 
+def deal
+
+@deal = Deal.find(params[:id])
+
+end
+
 end

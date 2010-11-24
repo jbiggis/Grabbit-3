@@ -1,8 +1,6 @@
 class ProfilesController < ApplicationController
 
-layout 'admin_menu' 
-
-before_filter :auth_admin
+layout 'admin_menu'  
 
 	# GET /profiles
   # GET /profiles.xml

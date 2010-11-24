@@ -1,6 +1,6 @@
 class MemberController < ApplicationController
 
-before_filter :auth_user
+before_filter :auth_member
 
 def my_coupons
 @coupons = Coupon.find_all_by_user_id(current_user.id)
@@ -16,7 +16,7 @@ def my_profile
 	
 end
 
-def auth_user
+def auth_member
 
 unless current_user && current_user.role == 'member'
 flash[:notice] = "Please sign in."

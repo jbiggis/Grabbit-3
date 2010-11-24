@@ -12,11 +12,11 @@
 		<%= image_tag("logo.png", :alt => "Grabbit", :width =>"100px") %>
 		
 		<div id="user-nav"/>
-
+	<%= render '/layouts/admin_menu' %>
 			<%= link_to "Today's Deal", '/public/home'%>
 			<% if user_signed_in? %>
 				<% if current_user.role == 'admin' %>
-				<%= render '/layouts/admin_menu' %>
+			
 					<%= link_to 'Admin Area', '/admin/menu' %>
 				<% end %>
 	<% if current_user.role == 'member' %>

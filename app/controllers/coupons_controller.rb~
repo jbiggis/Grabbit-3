@@ -2,7 +2,7 @@ class CouponsController < ApplicationController
 
 layout 'admin_menu'  
 
-before_filter :auth_admin
+before_filter :auth_user
 	# GET /coupons
   # GET /coupons.xml
   def index

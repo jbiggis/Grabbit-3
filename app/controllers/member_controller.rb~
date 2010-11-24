@@ -24,5 +24,6 @@ redirect_to '/public/home'
 	    
 end
 
+end
 
 end

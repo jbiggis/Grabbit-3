@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-def auth_admin
+def auth_user
 
 unless current_user && current_user.role == 'admin'
 flash[:notice] = "You do not have permission to access this page."

@@ -2,8 +2,6 @@ class DealsController < ApplicationController
 
 layout 'admin_menu'      
 
-before_filter :auth_admin
-
 	# GET /deals
   # GET /deals.xml
   def index

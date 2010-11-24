@@ -1,9 +1,6 @@
 class OrdersController < ApplicationController
 
-layout 'admin_menu'  
-
-
-before_filter :auth_admin
+layout 'admin_menu'        
 	# GET /orders
   # GET /orders.xml
   def index

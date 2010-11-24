@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
 
-layout 'admin_menu'        
+layout 'admin_menu'  
+
+
+before_filter :auth_admin
 	# GET /orders
   # GET /orders.xml
   def index
@@ -41,19 +44,58 @@ layout 'admin_menu'
 
   # POST /orders
   # POST /orders.xml
-  def create
-    @order = Order.new(params[:order])
+   def create
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to(@order, :notice => 'Order was successfully created.') }
-        format.xml  { render :xml => @order, :status => :created, :location => @order }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @order.errors, :status => :unprocessable_entity }
-      end
-    end
+	  if current_user.role == 'admin'
+		  flash[:notice] = "Admins cannot make purchases"
+		redirect_to '/public/home'
+	  else
+
+
+if user_signed_in? == false 
+
+@user = User.create(params[:user])
+
+params[:order][:user_id] = @user.id
+
+end 
+
+
+quantity = params[:order][:quantity].to_i
+
+until quantity == 0
+
+@order = Order.new(params[:order])
+
+
+@order.coupon_no = @order.user_id
+@order.save
+
+@coupon = Coupon.new
+
+@coupon.order_id = @order.id
+@coupon.user_id = @order.user_id
+@coupon.deal_id = @order.deal_id
+@coupon.status = 2
+
+if @coupon.save
+
+quantity -= 1
+
+else
+
+	render :action => "checkout"
+
+end
+
+end
+
+redirect_to(root_path, :notice => "Deal success Create YAH!")
   end
+
+   end
+
+
 
   # PUT /orders/1
   # PUT /orders/1.xml

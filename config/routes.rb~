@@ -1,11 +1,17 @@
 Grabbit3::Application.routes.draw do
+  resources :deals
+
   resources :coupons
 
   resources :profiles
 
   resources :orders
 
+match 'publics/create' => 'public#create'
+
   devise_for :users
+
+    root :to => 'public#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

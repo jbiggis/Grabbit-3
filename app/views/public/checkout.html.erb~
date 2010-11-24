@@ -1,0 +1,141 @@
+<h1><%=title%></h1>
+
+<%form_for(@public) do |f|%>
+
+	<div id="error_explanation">
+	<% if @public.errors.any? %>
+
+		<h2> <%= pluralize(@public.errors.count, 'error') %> prohibited this deal from being purchased: </h2>
+		<ul>
+			<% @public.errors.full_messages.each do |msg| %>
+				<li> <%= msg %> </li>
+			<% end %>
+		</ul>
+	<% end %>
+
+	</div>
+
+
+	<br/>
+
+
+
+<%= f.hidden_field :deal_id, :value => @deal.id %>
+
+<%= f.hidden_field :expiration_date, :value => @deal.expiration_date %>
+
+<%if user_signed_in? %>
+<%= f.hidden_field :user_id, :value => @user.id %>
+
+<% end %>
+<table>
+  <tr>
+	<th>Description</th>
+	<th>Price</th>
+	<th>Quantity</th>
+
+
+  </tr>
+
+<tr>
+	<td><%= h(@deal.title) %></td>
+	<td><%= h(@deal.price) %></td>
+	<td><%=f.text_field :quantity %></td>
+
+	</tr>
+
+
+<tr>
+	<td>Total Price: </td>
+</tr>
+</table>
+
+<br />
+
+
+
+
+	<% if user_signed_in? == false %>
+
+	Create an Account
+
+	<%= fields_for(@user) do |builder| %>
+		
+		<div class="field">
+		<%= builder.label :email %> <br/>
+		<%= builder.text_field :email %>
+	</div>
+
+		<div class="field">
+		<%= builder.label :password %> <br/>
+		<%= builder.text_field :password %>
+	</div>
+
+		<div class="field">
+		<%= builder.label :password_confirmation %> <br/>
+		<%= builder.text_field :password_confirmation %>
+	</div>
+
+	<% end %>
+<% end %>
+
+
+Billing Information
+
+
+
+		<div class="field">
+		<%= f.label :cardholder_name %><br/>
+		<%= f.text_field :cardholder_name %>
+
+	</div>
+
+		<div class="field">
+		<%= f.label :card_number %><br/>
+		<%= f.text_field :card_number %>
+
+	</div>
+
+			<div class="field">
+		<%= f.label :security_code %><br/>
+		<%= f.text_field :security_code %>
+
+	</div>
+
+		<div class="field">
+		<%= f.label :expiry_date %><br/>
+		<%= f.text_field :expiry_date %>
+
+	</div>
+
+		<div class="field">
+		<%= f.label :billing_address %><br/>
+		<%= f.text_field :billing_address %>
+
+	</div>
+
+			<div class="field">
+		<%= f.label :city %><br/>
+		<%= f.text_field :city %>
+
+	</div>
+
+		<div class="field">
+		<%= f.label :province %><br/>
+		<%= f.text_field :province %>
+
+	</div>
+		<div class="field">
+		<%= f.label :postal_code %><br/>
+		<%= f.text_field :postal_code %>
+
+	</div>
+
+	<div class="action">
+		<%= f.submit, 'http://savouries.ca'%>
+	
+	</div>
+
+<% end %>
+
+

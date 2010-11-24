@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= image_tag @deal.image.url(:medium) %>
+<%= image_tag @deal.image.url %>
 <p>
   <b>Title:</b>
   <%= @deal.title %>
@@ -28,7 +28,7 @@
 
 <p>
   <b>Expiration date:</b>
-  <%= @deal.expiration_date %>
+  <%= @deal.expiration_date.strftime("%B %d %Y") %>
 </p>
 
 <p>
@@ -42,6 +42,5 @@
 </p>
 
 
-<%= link_to 'Buy', edit_deal_path(@deal) %> 
-
+<%= link_to "Purchase this deal", {:controller => 'public', :action => 'checkout', :id => @deal.id} %>
 

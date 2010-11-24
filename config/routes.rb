@@ -7,6 +7,8 @@ Grabbit3::Application.routes.draw do
 
   resources :orders
 
+resources :publics, :controller => 'public'
+
   devise_for :users
 
     root :to => 'public#home'

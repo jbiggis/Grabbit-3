@@ -1,2 +1,8 @@
 class Deal < ActiveRecord::Base
+
+	has_many :coupons
+
+	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :url => "/assets/deals/:id/:style/:basename.:extension",
+	:path => ":rails_root/public/assets/deals/:id/:style/:basename.:extension"
+
 end
